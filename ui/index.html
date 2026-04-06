@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div id="ambient-bg"></div>
+    <div id="app">
+        <!-- Title bar -->
+        <div class="title-bar pywebview-drag-region">
+            <span class="title-text">FLOAT HUB</span>
+            <div class="window-controls">
+                <button id="back-btn" class="control-btn hidden" title="Back">
+                    <i class="ph ph-caret-left"></i>
+                </button>
+                <button id="float-btn" class="control-btn active-float" title="Toggle Float / Picture-in-Picture">
+                    <i class="ph ph-push-pin"></i>
+                </button>
+                <button id="minimize-btn" class="control-btn" title="Minimize">
+                    <i class="ph ph-minus"></i>
+                </button>
+                <button id="maximize-btn" class="control-btn" title="Maximize">
+                    <i class="ph ph-square"></i>
+                </button>
+                <button id="close-btn" class="control-btn" title="Close">
+                    <i class="ph ph-x"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="content-area">
+            <!-- Home Screen -->
+            <div id="input-screen" class="screen">
+                <div class="header">
+                    <div class="logo-wrapper">
+                        <i class="ph-fill ph-play-circle glowing-icon"></i>
+                        <div class="pulse-ring"></div>
+                    </div>
+                </div>
+
+                <div class="tab-switcher">
+                    <button class="tab-btn active" data-target="youtube"><i class="ph ph-globe"></i> Web Stream</button>
+                    <button class="tab-btn" data-target="local"><i class="ph ph-folder-video"></i> Local File</button>
+                </div>
+
+                <!-- Web Stream Input -->
+                <div id="youtube-panel" class="panel active">
+                    <div class="input-group">
+                        <input type="text" id="youtube-link" placeholder="Paste any Video/Site link..." autocomplete="off">
+                        <button id="play-yt-btn" class="action-btn">
+                            <i class="ph-fill ph-play"></i> Watch
+                        </button>
+                    </div>
+                    <div id="error-msg" class="hidden">Please enter a valid URL</div>
+                </div>
+
+                <!-- Local File Input -->
+                <div id="local-panel" class="panel">
+                    <div class="file-drop-area" id="file-drop-area">
+                        <i class="ph-fill ph-file-video"></i>
+                        <span>Click to browse video</span>
+                        <input type="file" id="local-file-input" accept="video/mp4,video/x-m4v,video/webm,video/*" class="hidden-input">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Screen -->
+            <div id="video-screen" class="screen hidden">
+                <div class="video-container">
+                    <!-- YouTube Iframe -->
+                    <iframe id="yt-player" class="player-element hidden" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <!-- Web Player -->
+                    <webview id="web-player" class="player-element hidden" src="" allowpopups></webview>
+                    <!-- Local Video -->
+                    <video id="local-player" class="player-element hidden" controls autoplay></video>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
