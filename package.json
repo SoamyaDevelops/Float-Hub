@@ -34,7 +34,8 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "asar": true
+        "asar": true,
+        "icon": "./float_hub_icon"
       },
       "makers": [
         {
