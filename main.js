@@ -39,7 +39,7 @@ function createWindow(port) {
     const mainWindow = new BrowserWindow({
         width: 400,
         height: 250,
-        icon: path.join(__dirname, 'float_hub_icon.png'),
+        icon: path.join(__dirname, process.platform === 'win32' ? 'float_hub_icon.ico' : 'float_hub_icon.png'),
         frame: false, // Frameless UI
         alwaysOnTop: true, // Float above everything
         transparent: false, // Windows breaks resizing if transparent: true
